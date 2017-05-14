@@ -8,7 +8,7 @@
  * 
  * Created by Davis Whittaker on 4 May 2017
  * 
- * So far, compiled but not tested with hardware.
+ * Compiled and tested with hardware. Works nicely and is very stable.
  */
 
 #include <Wire.h>
@@ -61,13 +61,6 @@ void loop()
 	if (sensor.timeoutOccurred()) {
 		if (debug) { Serial.println(" TIMEOUT"); }
 		distance = last_distance;
-/*		ctr++;
-		if (ctr == 5){
-			sensor.init();
-			sensor.setTimeout(500);
-			sensor.startContinuous();
-			ctr = 0;
-			if (debug) { Serial.println(" RESET Sensor"); } } */
 	}
 	else distance = sensor.readRangeContinuousMillimeters();
 
@@ -95,23 +88,11 @@ void loop()
                 if (debug) { Serial.println(" Yello-Red"); }
 	}
 
-//	if (distance <= 305 && distance != 0) { // Red
 	if (distance <= 305 && distance > 203) { // Red
 		redlight();
                 if (debug) { Serial.println(" Red"); }
 	}
 
-//	if (distance <= 203 && distance > 152 && distance != 0) {
-  	if (distance <= 203 && distance > 152) {
-		flashred(250);
-                if (debug) { Serial.println(" Slow"); }
-	}
-
-//	if (distance <= 152 && distance != 0) {
-  	if (distance <= 152) {
-		flashred(125);
-                if (debug) { Serial.println(" Too Close!"); }
-	}
 
 	last_distance = distance;
 
@@ -143,11 +124,4 @@ void greenlight(void){
 	digitalWrite(yellowpin, LOW);
 	digitalWrite(redpin, LOW);
 }
-
-/* Function to flash red light if too close. */
-void flashred(int d){
-	digitalWrite(redpin, HIGH);
-	delay(d);
-	digitalWrite(redpin, LOW);
-} // End flashred()
 
