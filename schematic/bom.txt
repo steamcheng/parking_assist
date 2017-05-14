@@ -1,0 +1,14 @@
+Bill of materials:
+
+1 Arduino Nano (or suitable microprocessor)
+1 Adafruit VL53L0X Time of Flight sensor
+3 5v relay boards (to control red, yellow and green lights)
+4 2 position screw terminals (power connections)
+1 3 pin header (relay triggers to red, yellow, green lights)
+2 2 pin headers (sensor)
+2 PC Boards to mount the components on
+
+For the red, yellow, green lights you may use anything you can dream up.  Originally I had LEDs
+in the plan, but found a small traffic light desk lamp for sale on eBay and used that with
+relays to trigger the lights.  If you use LEDs, you can skip the relays and use transistors to 
+trigger clusters of LEDs.
